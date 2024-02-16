@@ -43,10 +43,13 @@ export default function App() {
     <div>
       <label htmlFor="price">Prix</label>
       <input name="price" id="price" type="range" max={3000} defaultValue={1000} value={maxPrice} onInput={updatePriceRange} />
+      <span> {maxPrice} </span>
       <label htmlFor="stock">Stock</label>
       <input type="range" max={40} defaultValue={20} value={maxStock} onInput={updateMaxStock} />
-      <label htmlFor="annee"></label>
+      <span> {maxStock} </span>
+      <label htmlFor="annee">Année</label>
       <input type="range" min={2015} max={2024} defaultValue={2024} value={maxYear} onInput={updateMaxYear} />
+      <span> {maxYear} </span>
       {productsBalises}
     </div>
   )
