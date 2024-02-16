@@ -9,13 +9,18 @@ export default function App() {
     { name: "Azus", price: 200, stock: 20, img: "http://unsplash.it/100/100" }
   ];
 
-  const [maxPrice,setMaxPrice] = useState(1000)
+  const [maxPrice, setMaxPrice] = useState(1000)
   const updatePriceRange = e => {
     setMaxPrice(e.target.value)
   }
 
+  const [maxStock, setMaxStock] = useState(20)
+  const updateMaxStock = e => {
+    setMaxStock(e.target.value)
+  }
+
   const filteredProducts = products.filter(product => {
-    return product.price < maxPrice
+    return product.price < maxPrice && product.stock <= maxStock
   })
 
   const productsBalises = filteredProducts.map((product, i) => {
@@ -31,9 +36,10 @@ export default function App() {
 
   return (
     <div>
-      <label>
-        <input type="range" max={3000} defaultValue={1000} value={maxPrice} onInput={updatePriceRange} />
-      </label>
+      <label htmlFor="price">Prix</label>
+      <input name="price" id="price" type="range" max={3000} defaultValue={1000} value={maxPrice} onInput={updatePriceRange} />
+      <label htmlFor="stock">Stock</label>
+      <input type="range" max={40} defaultValue={20} value={maxStock} onInput={updateMaxStock} />
       {productsBalises}
     </div>
   )
